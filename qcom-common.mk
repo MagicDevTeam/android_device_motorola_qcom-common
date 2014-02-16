@@ -130,6 +130,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/scripts/mount_pds.sh:system/bin/mount_pds.sh
 
+# GPS configuration
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/config/gps.conf:system/etc/gps.conf
+
 # We have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -141,8 +145,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.composition.type=dyn \
     persist.hwc.mdpcomp.enable=true \
     debug.mdpcomp.logs=0 \
-    debug.enabletr=0 \
-    mm.enable.smoothstreaming=true
+    debug.enabletr=0
 
 # QCOM Display
 PRODUCT_PACKAGES += \
@@ -246,5 +249,9 @@ PRODUCT_GMS_CLIENTID_BASE ?= android-motorola
 # QC time services
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
+
+# Enable KSM by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ksm.default=1
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
